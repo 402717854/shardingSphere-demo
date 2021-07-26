@@ -1,24 +1,19 @@
-package com.shardingsphere.demo;
+package com.shardingsphere.demo.controller;
 
 import com.shardingsphere.demo.entity.TOrder;
 import com.shardingsphere.demo.service.OrderService;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 import java.util.Date;
 
-@SpringBootTest
-@RunWith(SpringRunner.class)
-public class ShardingJdbcDemoApplicationTests {
-
-    @Resource
+@RestController
+public class OrderController {
+    @Autowired
     private OrderService orderService;
 
-    @Test
+    @RequestMapping("/insert")
     public void testInsert() {
         TOrder tOrder = new TOrder();
         tOrder.setUserId(1L);
@@ -26,5 +21,4 @@ public class ShardingJdbcDemoApplicationTests {
         tOrder.setCreateTime(new Date());
         orderService.insert(tOrder);
     }
-
 }

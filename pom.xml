@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.shardingsphere.demo</groupId>
-    <artifactId>shardingSphere-demo</artifactId>
+    <artifactId>shardingSphere-group</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>shardingSphere-demo</name>
+    <name>shardingSphere-group</name>
     <description>Demo project for Spring Boot</description>
     <packaging>pom</packaging>
 

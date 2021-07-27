@@ -9,8 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.shardingsphere.demo</groupId>
-    <artifactId>sharding-jdbc-demo</artifactId>
-    <name>sharding-jdbc-demo</name>
+    <artifactId>sharding-jdbc-table-demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>sharding-jdbc-table-demo</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
@@ -20,6 +21,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!--Spring重试框架 start-->
+        <dependency>
+            <groupId>org.springframework.retry</groupId>
+            <artifactId>spring-retry</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+        </dependency>
+        <!--Spring重试框架 end-->
+
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
@@ -67,7 +79,6 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
     <build>
         <plugins>
@@ -128,4 +139,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

@@ -13,6 +13,8 @@
         <module>sharding-jdbc-demo</module>
         <module>sharding-jdbc-table-demo</module>
         <module>sharding-jdbc-mixed-demo</module>
+        <module>sharding-jdbc-time-demo</module>
+        <module>sharding-jdbc-time-mixed-demo</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>

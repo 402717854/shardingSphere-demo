@@ -3,6 +3,7 @@ package com.shardingsphere.demo.service.impl;
 import com.shardingsphere.demo.service.RetryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.CircuitBreaker;
 import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
@@ -34,9 +35,30 @@ public class RetryServiceImpl implements RetryService {
         return "调用RPC成功!!";
     }
 
+    /**
+     * 断路器开启后,经过resetTimeout并且在这短时间内没有新的请求，超时关闭断路器
+     * openTimeout:请求在此时间段内连续请求达到最大重试次数开启断路器
+     * @param retryNum
+     * @return
+     */
+    @Override
+    @CircuitBreaker(include = { RuntimeException.class }, openTimeout = 10000, resetTimeout = 15000)
+    public String retryCircuitBreaker(String retryNum) {
+        log.info("real service called:{}",retryNum);
+        if("3".equals(retryNum)){
+            throw new RuntimeException("抛出异常");
+        }
+        return "real service called";
+    }
+
     @Recover
-    public String recover(RuntimeException e) {
-        log.info(e.getMessage());
+    public String recover1(RuntimeException e) {
+        log.info("recover1:{}",e.getMessage());
+        return e.getMessage();
+    }
+    @Recover
+    public String recover2(RuntimeException e,String retryNum) {
+        log.info(retryNum+"recover2:{}",e.getMessage());
         return e.getMessage();
     }
 }

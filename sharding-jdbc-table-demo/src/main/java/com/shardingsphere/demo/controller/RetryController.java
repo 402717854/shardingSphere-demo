@@ -19,4 +19,13 @@ public class RetryController {
         }
         return null;
     }
+    @RequestMapping("/retry2")
+    public String retry2(String retryNum){
+        try {
+            return retryService.retryCircuitBreaker(retryNum);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
